@@ -1,0 +1,86 @@
+<script>
+
+    function getFormData(object) {
+        const formData = new FormData();
+        Object.keys(object).forEach(key => formData.append(key, object[key]));
+        return formData;
+    }
+
+    function hitAPI() {
+        var xhr = new XMLHttpRequest();
+        let d = JSON.stringify({{{ json }}});
+        xhr.open("GET", "/orders/new?products="+d, true);
+        xhr.send();
+    }
+</script>
+
+<div>
+    <div class="table-responsive">
+        <table class="table table-condensed">
+            {{#if dataP}}
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            {{else}}
+            <tr>
+                <td colspan="5">No Products found ... Add One!</td>
+            </tr>
+            {{/if}}
+            <tbody>
+                {{#each dataP}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td>{{this.description}}</td>
+                    <td>{{this.price}}</td>
+                    <td>{{this.quantity}}</td>
+                    </td>
+                    <td>
+                        <a href="/cart/add/{{this.id}}">Add</a> |
+                        <a href="/cart/delete/{{this.id}}">Remove</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+
+        </table>
+        <table class="table table-condensed">
+            {{#if dataC}}
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            {{else}}
+            <tr>
+                <td colspan="5">No Products found ... Add One!</td>
+            </tr>
+            {{/if}}
+            <tbody>
+                {{#each dataC}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td>{{this.description}}</td>
+                    <td>{{this.price}}</td>
+                    <td>{{this.quantity}}</td>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+            <tfooter>
+                <tr>
+                    <td>
+                        <button class="btn btn-primary" onClick=hitAPI()>Order</button>
+                    </td>
+                </tr>
+            </tfooter>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div>
+    <div class="table-responsive">
+        <table class="table table-condensed">
+            {{#if data}}
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            {{else}}
+            <tr>
+                <td colspan="5">No Users found ...</td>
+            </tr>
+            {{/if}}
+            <tbody>
+                {{#each data}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    </td>
+                    <td>
+                        <a href="/orders/{{this.id}}">Orders</a> |
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="table-responsive">
+  <form method="post" action='/products/edit'>
+    <table class="table table-condensed">
+      <tbody>
+
+        <tr>
+          <th>Name: </th>
+          <td><input type="text" name="name" value="{{data.name}}" required placeholder="Enter Name"></td>
+        </tr>
+        <tr>
+          <th>Description: </th>
+          <td><input type="text" name="description" value="{{data.description}}" required
+              placeholder="Enter Description"></td>
+        </tr>
+        <tr>
+          <th>Price: </th>
+          <td><input type="text" name="price" value="{{data.price}}" required placeholder="Enter Price"></td>
+        </tr>
+        <tr>
+          <th>Quantity: </th>
+          <td><input type="text" name="quantity" value="{{data.quantity}}" required placeholder="Enter Quantity"></td>
+        </tr>
+        <input type="hidden" name="id" value="{{data.id}}">
+
+      </tbody>
+      <tfooter>
+        <tr>
+          <td></td>
+          <td>
+            <input type="submit" value="Save" class="btn btn-success">
+          </td>
+        </tr>
+      </tfooter>
+    </table>
+  </form>
+</div>
